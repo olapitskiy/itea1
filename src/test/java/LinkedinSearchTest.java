@@ -33,19 +33,21 @@ public class LinkedinSearchTest {
         LinkedinLoginPage loginPage = new LinkedinLoginPage(driver);
         loginPage.loginAs("ol2018@ukr.net", "0933386035");
         //search
-        String searchTerm = "HR";
+        String searchTerm = "hr";
         driver.findElement(By.xpath("//input[@placeholder='Поиск']")).sendKeys(searchTerm);
         driver.findElement(By.xpath("//*[@type='search-icon']")).click();
         //[contains(@class,'search-result__occluded-item')]
         List<WebElement> results = driver.findElements(By.xpath("//li[contains(@class,'search-result__occluded-item')]"));
         int currentResultsNumber = results.size();
         Assert.assertEquals(results.size(), 10, "Number of results is wrong");
-        for (int i = 1; i < results.size(); i++) {
-            ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", results.get(i));
-           String cardTitle = driver.findElement(By.xpath("//li[contains(@class,'search-result__occluded-item')]["+i+"]//span[contains(@class, 'actor-name')]")).getText();
-           System.out.println(cardTitle+"  "+cardTitle.length());
 
-
+        for (WebElement result : results) {
+            ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", result);
+            String cardTitle = result.getText();
+            System.out.println("XXXX");
+            System.out.println(cardTitle);
+            Assert.assertTrue(cardTitle.toLowerCase().contains(searchTerm),
+                    "Searchterm "+searchTerm+ "not found in cart number");
 
             //Assert.assertTrue(cardTitle.contains(searchTerm.toLowerCase()), "Searchterm "+searchTerm+ "not found in cart number"+ Integer.toString(i));
             //cardTitle.indexOf(searchTerm)>-1?true:false
