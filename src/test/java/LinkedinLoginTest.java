@@ -5,7 +5,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
-
 import java.util.concurrent.TimeUnit;
 
 public class LinkedinLoginTest {
@@ -19,55 +18,39 @@ public class LinkedinLoginTest {
     }
 
     @AfterMethod
-    public void afterTest() {
-        driver.close();
-    }
+    public void afterTest() { driver.close(); }
 
     @Test
     public void successfulLoginTest() {
-        String initialPageTitle = driver.getTitle();
-        String initialPageUrl = driver.getCurrentUrl();
-        Assert.assertEquals(initialPageTitle, "Крупнейшая в мире сеть профессиональных контактов | LinkedIn", "Login page title is wrong");
-        //WebElement emailField = driver.findElement(By.xpath("//*[@id='login-email']"));
-        WebElement emailField = driver.findElement(By.id("login-email"));
-        WebElement passwordField = driver.findElement(By.id("login-password"));
-        WebElement signInButton = driver.findElement(By.id("login-submit"));
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-
-        emailField.sendKeys("ol2018@ukr.net");
-        passwordField.sendKeys("0933386035");
-        signInButton.click();
-        driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
-
-        WebElement element = driver.findElement(By.id("rightfooter-default_copyright"));
-        Assert.assertTrue(element.isDisplayed(), "User Error");
-/*
-        WebElement userIcon = driver.findElement(By.id("profile-nav-item"));
-        Assert.assertTrue(userIcon.isDisplayed(), "User icon was not displayed");
-
-        Assert.assertNotEquals(driver.getTitle(), initialPageTitle,
+        LinkedinLoginPage loginPage = new LinkedinLoginPage(driver);
+        String initialPageTitle = loginPage.getPageTitle();
+        String initialPageUrl = loginPage.getPageUrl();
+       // Assert.assertEquals(initialPageTitle, "LinkedIn: Log In or Sign Up";
+        LinkedinBasePage homePage = loginPage.loginAs("ol2018@ukr.net", "0933386035");
+        Assert.assertTrue(homePage.isSignedIn(), "User is not signed in");
+        Assert.assertNotEquals(homePage.getPageTitle(), initialPageTitle,
                 "Page title did not change after login");
-        Assert.assertNotEquals(driver.getCurrentUrl(), initialPageUrl,
+        Assert.assertNotEquals(homePage.getPageUrl(), initialPageUrl,
                 "Page url did not change after login");
-*/
     }
 
     @Test
     public void negativeLoginTest() {
-        //WebElement emailField = driver.findElement(By.xpath("//*[@id='login-email']"));
-        WebElement emailField = driver.findElement(By.id("login-email"));
-        WebElement passwordField = driver.findElement(By.id("login-password"));
-        WebElement signInButton = driver.findElement(By.id("login-submit"));
-      //  Assert.assertTrue(emailField.isDisplayed(), "EMail is not found.");
-        emailField.sendKeys("test@ukr.net");
-        passwordField.sendKeys("12345");
-        signInButton.click();
-
-        WebElement alertMessage = driver.findElement(By.xpath("//div[@id='global-alert-queue']//strong[not(text()='')]"));
-        Assert.assertTrue(alertMessage.isDisplayed(), "Alert message is not displayed.");
-
-
+        LinkedinLoginPage loginPage = new LinkedinLoginPage(driver);
+        String initialPageTitle = loginPage.getPageTitle();
+        String initialPageUrl = loginPage.getPageUrl();
+        //LinkedinBasePage homePage = loginPage.loginAs("ol2018@ukr.net", "0933386035");
+        LinkedinBasePage homePage = loginPage.loginAs("test@ukr.net", "12345");
+        try {
+            Assert.assertTrue(homePage.isSignedIn(), "User signed in");
+            System.out.println("1");
+        }catch (Exception e) {
+            Assert.assertTrue(e.getMessage().contains("no such element"));
+            System.out.println("2");
+        }
+        Assert.assertNotEquals(homePage.getPageTitle(), initialPageTitle,
+                "Page title did not change after login");
+        Assert.assertNotEquals(homePage.getPageUrl(), initialPageUrl,
+                "Page url did not change after login");
     }
-
-
 }

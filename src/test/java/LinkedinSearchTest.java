@@ -22,12 +22,12 @@ public class LinkedinSearchTest {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("https://www.linkedin.com/");
     }
-/*
+
     @AfterMethod
     public void afterTest() {
         driver.close();
     }
-*/
+
     @Test
     public void basicSearchTest() throws InterruptedException {
         LinkedinLoginPage loginPage = new LinkedinLoginPage(driver);
@@ -36,7 +36,6 @@ public class LinkedinSearchTest {
         String searchTerm = "hr";
         driver.findElement(By.xpath("//input[@placeholder='Поиск']")).sendKeys(searchTerm);
         driver.findElement(By.xpath("//*[@type='search-icon']")).click();
-        //[contains(@class,'search-result__occluded-item')]
         List<WebElement> results = driver.findElements(By.xpath("//li[contains(@class,'search-result__occluded-item')]"));
         int currentResultsNumber = results.size();
         Assert.assertEquals(results.size(), 10, "Number of results is wrong");
@@ -44,8 +43,8 @@ public class LinkedinSearchTest {
         for (WebElement result : results) {
             ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", result);
             String cardTitle = result.getText();
-            System.out.println("XXXX");
-            System.out.println(cardTitle);
+          // System.out.println("XXXX");
+          // System.out.println(cardTitle);
             Assert.assertTrue(cardTitle.toLowerCase().contains(searchTerm),
                     "Searchterm "+searchTerm+ "not found in cart number");
 
@@ -53,13 +52,6 @@ public class LinkedinSearchTest {
             //cardTitle.indexOf(searchTerm)>-1?true:false
             //loginPage.waitUntilElementIsClickable(driver.findElement(By.xpath("//li[contains(@class,'search-result__occluded-item')]["+i+"]//span[contains(@class, 'actor-name')]")), 30);
         }
-
-        //List<WebElement> cardTitles = driver.findElements(By.xpath("//li[contains(@class,'search-result__occluded-item')]//span[contains(@class, 'actor-name')]"));
-
-
-        //input[@placeholder='Search']
-        //*[@type='search-icon']
-        //div[contains(@class,'search-result--person')]
 
     }
 }
