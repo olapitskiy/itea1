@@ -13,12 +13,19 @@ public class LinkedinPasswordResetSubmitPage extends LinkedinBasePage{
     @FindBy(xpath = "//a[@class='status-link btn-resend-link']")
     private WebElement resentButtonLink;
 
-
+    /**
+     *
+     * @param driver
+     */
     public LinkedinPasswordResetSubmitPage(WebDriver driver){
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isLoaded() {
         boolean isLoaded;
         try {
@@ -30,11 +37,21 @@ public class LinkedinPasswordResetSubmitPage extends LinkedinBasePage{
         return isLoaded;
     }
 
+    /**
+     *
+     * @param resetPasswordLink
+     * @return
+     */
     public LinkedinChooseNewPasswordPage navigateToResetPasswordLink(String resetPasswordLink) {
         driver.get(resetPasswordLink);
         return new LinkedinChooseNewPasswordPage(driver);
     }
 
+    /**
+     *
+     * @param messageToPartial
+     * @return
+     */
     public String getResetPasswordLinkFromEmail(String messageToPartial) {
         String messageSubjectPartial = "here's the link to reset your password";
         String messageFromPartial = "security-noreply@linkedin.com";

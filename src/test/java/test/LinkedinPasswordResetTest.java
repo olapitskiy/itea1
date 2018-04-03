@@ -12,6 +12,9 @@ public class LinkedinPasswordResetTest extends LinkedinBaseTest{
     String userEmail = "olapitskiy@gmail.com";
     String newPassword = "83282837";
 
+    /**
+     *
+     */
     @Test
     public void successfulPasswordReset() {
         LinkedinRequestPasswordResetPage requestPasswordResetPage = landingPage.forgotPasswordLinkClick();

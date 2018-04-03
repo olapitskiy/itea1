@@ -8,12 +8,20 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.annotations.*;
 import page.LinkedinLandingPage;
 
+
 public class LinkedinBaseTest {
     WebDriver driver;
     LinkedinLandingPage landingPage;
+
+    /**
+     *
+     * @param browserType
+     * @param envURL
+     */
     @Test
     @Parameters({"browserType", "envURL"})
     @BeforeMethod
+
     public void beforeTest(@Optional("chrome") String browserType, @Optional("https://ua.linkedin.com/") String envURL) {
 
         switch (browserType.toLowerCase()){

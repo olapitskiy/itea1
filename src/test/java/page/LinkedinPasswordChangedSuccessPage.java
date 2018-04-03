@@ -11,12 +11,20 @@ public class LinkedinPasswordChangedSuccessPage extends LinkedinBasePage{
     @FindBy(xpath = "//div[@class='form-actions']/a[@href]")
     private WebElement goToHomeButton;
 
+    /**
+     *
+     * @param driver
+     */
 
     public LinkedinPasswordChangedSuccessPage(WebDriver driver){
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isLoaded() {
         boolean isLoaded;
         try {

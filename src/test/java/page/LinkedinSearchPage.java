@@ -18,11 +18,19 @@ public class LinkedinSearchPage extends LinkedinBasePage{
     @FindBy(xpath = "//h3[contains(@class,'search-results__total')]")
     private WebElement resultsNumber;
 
+    /**
+     *
+     * @param driver
+     */
     public LinkedinSearchPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
+    /**
+     *
+     * @return
+     */
     public List<String> getResults() {
         waitUntilElementIsVisible(resultsNumber, 10);
         List<String> resultsStringList = new ArrayList();
@@ -38,6 +46,10 @@ public class LinkedinSearchPage extends LinkedinBasePage{
         return resultsStringList;
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isLoaded() {
         boolean isLoaded;
         try {

@@ -15,10 +15,18 @@ public abstract class LinkedinBasePage {
         this.driver = driver;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPageTitle() {
         return driver.getTitle();
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPageUrl() {
         return driver.getCurrentUrl();
     }
@@ -33,17 +41,31 @@ public abstract class LinkedinBasePage {
         return webElement;
     }
 
+    /**
+     *
+     * @param webElement
+     * @param timeOutInSeconds
+     * @return
+     */
     public WebElement waitUntilElementIsClickable (WebElement webElement, int timeOutInSeconds){
         WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
       wait.until(ExpectedConditions.elementToBeClickable(webElement));
       return webElement;
     }
-
+    /**
+     *
+     * @param webElement
+     * @param timeOutInSeconds
+     */
     public void waitUntilElementIsVisible (WebElement webElement, int timeOutInSeconds){
         WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
         wait.until(ExpectedConditions.visibilityOf(webElement));
     }
 
+    /**
+     *
+     * @return
+     */
     public abstract boolean isLoaded();
 
 }

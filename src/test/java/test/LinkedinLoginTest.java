@@ -7,7 +7,9 @@
         import page.LinkedinLoginPage;
 
         public class LinkedinLoginTest extends LinkedinBaseTest{
-
+            /**
+             *
+             */
             @Test
             public void successfulLoginTest() {
                 String initialPageTitle = landingPage.getPageTitle();

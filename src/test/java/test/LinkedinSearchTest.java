@@ -62,6 +62,7 @@ public class LinkedinSearchTest {
         LinkedinHomePage homePage = landingPage.loginAs("ol2018@ukr.net", "0933386035");
         LinkedinSearchPage searchPage = homePage.searchByTerm(searchTerm);
         List<String> results = searchPage.geResults();
+        sleep (5000);
         Assert.assertEquals(results.size(), 10, "Number of results is wrong");
         for (String result: results)   {
             Assert.assertTrue(result.toLowerCase().contains(searchTerm),

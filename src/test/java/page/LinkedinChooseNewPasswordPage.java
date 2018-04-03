@@ -18,12 +18,19 @@ public class LinkedinChooseNewPasswordPage extends LinkedinBasePage{
     @FindBy(xpath = "//input[@type='submit']")
     private WebElement submitButton;
 
-
+    /**
+     *
+     * @param driver
+     */
     public LinkedinChooseNewPasswordPage(WebDriver driver){
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isLoaded() {
         boolean isLoaded;
         try {
@@ -35,6 +42,11 @@ public class LinkedinChooseNewPasswordPage extends LinkedinBasePage{
         return isLoaded;
     }
 
+    /**
+     *
+     * @param newPassword
+     * @return
+     */
     public LinkedinPasswordChangedSuccessPage submitNewPassword(String newPassword) {
         newPasswordField.sendKeys(newPassword);
         newPasswordRetypeField.sendKeys(newPassword);

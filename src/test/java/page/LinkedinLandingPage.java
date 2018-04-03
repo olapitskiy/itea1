@@ -20,16 +20,31 @@ public class LinkedinLandingPage extends LinkedinBasePage{
     @FindBy(xpath = "//a[@class='link-forgot-password']")
     private WebElement forgotPasswordLink;
 
+    /**
+     *
+     * @param driver
+     */
     public LinkedinLandingPage(WebDriver driver){
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
+    /**
+     *
+     * @return
+     */
     public LinkedinRequestPasswordResetPage forgotPasswordLinkClick() {
         forgotPasswordLink.click();
         return new LinkedinRequestPasswordResetPage(driver);
     }
 
+    /**
+     *
+     * @param email
+     * @param password
+     * @param <T>
+     * @return
+     */
     public <T> T loginAs(String email, String password){
         waitUntilElementIsClickable(emailField, 5);
         emailField.sendKeys(email);
@@ -46,6 +61,10 @@ public class LinkedinLandingPage extends LinkedinBasePage{
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isLoaded() {
         boolean isLoaded;
         try {

@@ -17,17 +17,29 @@ public class LinkedinHomePage extends LinkedinBasePage{
     @FindBy(xpath = "//*[@type='search-icon']")
     private WebElement searchIcon;
 
-
+    /**
+     *
+     * @param driver
+     */
     public LinkedinHomePage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isSignedIn() {
         waitUntilElementIsClickable(userIcon);
         return userIcon.isDisplayed();
     }
 
+    /**
+     *
+     * @param searchTerm
+     * @return
+     */
     public LinkedinSearchPage searchByTerm(String searchTerm) {
         waitUntilElementIsClickable(searchField);
         searchField.sendKeys(searchTerm);
@@ -35,6 +47,10 @@ public class LinkedinHomePage extends LinkedinBasePage{
         return new LinkedinSearchPage(driver);
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isLoaded() {
         boolean isLoaded;
         try {

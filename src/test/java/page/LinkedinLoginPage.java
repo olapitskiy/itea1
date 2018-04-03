@@ -17,11 +17,19 @@ public class LinkedinLoginPage extends LinkedinBasePage{
     @FindBy(id = "btn-primary")
     private WebElement signInButton;
 
+    /**
+     *
+     * @param driver
+     */
     public LinkedinLoginPage(WebDriver driver){
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isLoaded() {
         boolean isLoaded;
         try {
