@@ -13,7 +13,7 @@ import java.util.concurrent.Executors;
 public class GMailService {
     String host = "imap.gmail.com";
     String user = "olapitskiy@gmail.com";
-    String pass = "5625262";
+    String pass = "83282837";
 
     private volatile boolean isMessageReceived = false;
     private volatile String messageString;

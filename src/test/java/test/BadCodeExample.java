@@ -16,3 +16,8 @@ public class BadCodeExample {
 		sleep(5000);
 	}
 }
+
+//      Assert.assertEquals(initialPageTitle, "LinkedIn: Войти или зарегистрироваться",
+//             "Login page title is wrong");
+//     LinkedinHomePage homePage = landingPage.loginAs("ol2018@ukr.net", "0933386035");
+//            package test;

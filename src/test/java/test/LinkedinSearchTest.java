@@ -1,24 +1,18 @@
+
 package test;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
-import page.LinkedinHomePage;
-import page.LinkedinLandingPage;
-import page.LinkedinSearchPage;
+        import org.testng.Assert;
+        import org.testng.annotations.Test;
+        import page.LinkedinHomePage;
+        import page.LinkedinSearchPage;
 
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-import static java.lang.Thread.sleep;
+        import java.util.List;
 
 public class LinkedinSearchTest extends LinkedinBaseTest{
 
+    /**
+     * Test that verifies basic Search by specific Search term
+     */
     @Test
     public void basicSearchTest(){
         String searchTerm = "hr";
@@ -35,7 +29,6 @@ public class LinkedinSearchTest extends LinkedinBaseTest{
         }
     }
 }
-
 /*
 public class LinkedinSearchTest {
     WebDriver driver;

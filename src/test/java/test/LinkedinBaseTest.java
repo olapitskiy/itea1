@@ -1,5 +1,3 @@
-//  System.setProperty("webdriver.chrome.driver", "D:\\gooolech driver\\chromedriver.exe");
-
 package test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -13,7 +11,7 @@ import page.LinkedinLandingPage;
 public class LinkedinBaseTest {
     WebDriver driver;
     LinkedinLandingPage landingPage;
-
+    @Test
     @Parameters({"browserType", "envURL"})
     @BeforeMethod
     public void beforeTest(@Optional("chrome") String browserType, @Optional("https://ua.linkedin.com/") String envURL) {

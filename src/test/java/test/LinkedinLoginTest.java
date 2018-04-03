@@ -1,9 +1,4 @@
-
-  //      Assert.assertEquals(initialPageTitle, "LinkedIn: Войти или зарегистрироваться",
-   //             "Login page title is wrong");
-   //     LinkedinHomePage homePage = landingPage.loginAs("ol2018@ukr.net", "0933386035");
-    //            package test;
-  package test;
+ package test;
 
         import org.testng.Assert;
         import org.testng.annotations.DataProvider;
@@ -17,8 +12,8 @@
             public void successfulLoginTest() {
                 String initialPageTitle = landingPage.getPageTitle();
                 String initialPageUrl = landingPage.getPageUrl();
-//                Assert.assertEquals(initialPageTitle, "LinkedIn: Войти или зарегистрироваться",
-  //                      "Login page title is wrong");
+                Assert.assertEquals(initialPageTitle, "LinkedIn: Войти или зарегистрироваться",
+                   "Login page title is wrong");
 
                 LinkedinHomePage homePage = landingPage.loginAs("ol2018@ukr.net", "0933386035");
                 Assert.assertTrue(homePage.isSignedIn(), "User is not signed in");
