@@ -14,7 +14,7 @@
             public void successfulLoginTest() {
                 String initialPageTitle = landingPage.getPageTitle();
                 String initialPageUrl = landingPage.getPageUrl();
-                Assert.assertEquals(initialPageTitle, "LinkedIn: Войти или зарегистрироваться",
+                Assert.assertEquals(initialPageTitle, "LinkedIn: Log In or Sign Up",
                    "Login page title is wrong");
 
                 LinkedinHomePage homePage = landingPage.loginAs("ol2018@ukr.net", "0933386035");
@@ -26,13 +26,21 @@
                         "Page url did not change after login");
             }
 
-
+            /**
+             *
+             * @return
+             */
             @DataProvider
             public Object[][] negativeTestCredentialsReturnedToLanding() {
                 return new Object[][]{
                         {"", ""}};
             }
 
+            /**
+             *
+             * @param email
+             * @param password
+             */
             @Test(dataProvider="negativeTestCredentialsReturnedToLanding")
             public void negativeLoginTestReturnedToLanding(String email, String password) {
                 String initialPageTitle = landingPage.getPageTitle();
@@ -46,12 +54,23 @@
 
             }
 
+            /**
+             *
+             * @return
+             */
             @DataProvider
             public Object[][] negativeTestCredentialsReturnedToLogin() {
                 return new Object[][]{
                         {"xyz", "xyz", "Please enter a valid email address", "The password you provided must have at least 6 characters."}};
             }
 
+            /**
+             *
+             * @param email
+             * @param password
+             * @param emailMessage
+             * @param passwordMessage
+             */
             @Test(dataProvider="negativeTestCredentialsReturnedToLogin")
             public void negativeLoginTestReturnedToLogin(String email, String password, String emailMessage, String passwordMessage) {
                 String initialPageTitle = landingPage.getPageTitle();

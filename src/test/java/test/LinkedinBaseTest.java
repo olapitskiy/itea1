@@ -18,20 +18,19 @@ public class LinkedinBaseTest {
      * @param browserType
      * @param envURL
      */
-    @Test
+
     @Parameters({"browserType", "envURL"})
     @BeforeMethod
-
     public void beforeTest(@Optional("chrome") String browserType, @Optional("https://ua.linkedin.com/") String envURL) {
 
         switch (browserType.toLowerCase()){
-            case "firefox" :
-                WebDriverManager.firefoxdriver().setup();
-                driver = new FirefoxDriver();
-                break;
             case "chrome" :
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
+                break;
+            case "firefox" :
+                WebDriverManager.firefoxdriver().setup();
+                driver = new FirefoxDriver();
                 break;
             default :
                 WebDriverManager.iedriver().setup();

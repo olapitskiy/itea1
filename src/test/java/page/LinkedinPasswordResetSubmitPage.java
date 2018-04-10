@@ -14,8 +14,10 @@ public class LinkedinPasswordResetSubmitPage extends LinkedinBasePage{
     private WebElement resentButtonLink;
 
     /**
-     *
-     * @param driver
+     *передача параметров WebDriver родительскому классу (LinkedinBasePage) super(driver);
+     * и вызываем PageFactory.initElements(driver, this).
+     * Драйвер не начинает искать элементы на странице сразу же, а ищет их как только мы обращаемся к полю класса
+     * @param driver передаём WebDriver
      */
     public LinkedinPasswordResetSubmitPage(WebDriver driver){
         super(driver);
@@ -23,8 +25,8 @@ public class LinkedinPasswordResetSubmitPage extends LinkedinBasePage{
     }
 
     /**
-     *
-     * @return
+     * проверяе загрузилась ли страница или нет
+     * @return isLoaded ( true - если страница загрузилась, false -  если страница не загрузилась)
      */
     public boolean isLoaded() {
         boolean isLoaded;
@@ -38,9 +40,9 @@ public class LinkedinPasswordResetSubmitPage extends LinkedinBasePage{
     }
 
     /**
-     *
-     * @param resetPasswordLink
-     * @return
+     * reset Password Link
+     * @param reset Password Link
+     * @return Choose New Password Page
      */
     public LinkedinChooseNewPasswordPage navigateToResetPasswordLink(String resetPasswordLink) {
         driver.get(resetPasswordLink);
@@ -48,9 +50,9 @@ public class LinkedinPasswordResetSubmitPage extends LinkedinBasePage{
     }
 
     /**
-     *
+     * подтверждение Reset Password Link From Email
      * @param messageToPartial
-     * @return
+     * @return resetPasswordLink
      */
     public String getResetPasswordLinkFromEmail(String messageToPartial) {
         String messageSubjectPartial = "here's the link to reset your password";

@@ -18,8 +18,9 @@ public class LinkedinHomePage extends LinkedinBasePage{
     private WebElement searchIcon;
 
     /**
-     *
-     * @param driver
+     * Constructor of LinkedinHomePage class that takes WebDrier instance from LinkedinBasePage class
+     * and initialise LinkedinHomePage WebElements via PageFactory
+     * @param driver WebDriver instance
      */
     public LinkedinHomePage(WebDriver driver) {
         super(driver);
@@ -27,8 +28,8 @@ public class LinkedinHomePage extends LinkedinBasePage{
     }
 
     /**
-     *
-     * @return
+     * проверяе произошол воход или нет
+     * @return isDisplayed userIcon
      */
     public boolean isSignedIn() {
         waitUntilElementIsClickable(userIcon);
@@ -48,8 +49,8 @@ public class LinkedinHomePage extends LinkedinBasePage{
     }
 
     /**
-     *
-     * @return
+     * проверяе загрузилась ли страница или нет
+     * @return isLoaded ( true - если страница загрузилась, false -  если страница не загрузилась)
      */
     public boolean isLoaded() {
         boolean isLoaded;

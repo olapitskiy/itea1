@@ -19,8 +19,10 @@ public class LinkedinSearchPage extends LinkedinBasePage{
     private WebElement resultsNumber;
 
     /**
-     *
-     * @param driver
+     *передача параметров WebDriver родительскому классу (LinkedinBasePage) super(driver);
+     * и вызываем PageFactory.initElements(driver, this).
+     * Драйвер не начинает искать элементы на странице сразу же, а ищет их как только мы обращаемся к полю класса
+     * @param driver передаём WebDriver
      */
     public LinkedinSearchPage(WebDriver driver) {
         super(driver);
@@ -28,8 +30,8 @@ public class LinkedinSearchPage extends LinkedinBasePage{
     }
 
     /**
-     *
-     * @return
+     * просотр результатов поиска с поощью скрола
+     * @return results String List
      */
     public List<String> getResults() {
         waitUntilElementIsVisible(resultsNumber, 10);
@@ -47,8 +49,8 @@ public class LinkedinSearchPage extends LinkedinBasePage{
     }
 
     /**
-     *
-     * @return
+     * проверяет загрузилась ли страница или нет
+     * @return isLoaded ( true - если страница загрузилась, false -  если страница не загрузилась)
      */
     public boolean isLoaded() {
         boolean isLoaded;

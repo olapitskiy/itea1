@@ -18,8 +18,12 @@ public class LinkedinLoginPage extends LinkedinBasePage{
     private WebElement signInButton;
 
     /**
+     * передача параетров WebDriver родительскому классу (LinkedinBasePage) super(driver);
+     * и вызываем PageFactory.initElements(driver, this).
+     * Драйвер не начинает искать элементы на странице сразу же,
+     * а ищет их как только мы обращаемся к полю класса
      *
-     * @param driver
+     * @param driver передаём WebDriver
      */
     public LinkedinLoginPage(WebDriver driver){
         super(driver);
@@ -27,8 +31,8 @@ public class LinkedinLoginPage extends LinkedinBasePage{
     }
 
     /**
-     *
-     * @return
+     * проверяе загрузилась ли страница или нет
+     * @return isLoaded ( true - если страница загрузилась, false -  если страница не загрузилась)
      */
     public boolean isLoaded() {
         boolean isLoaded;
@@ -40,6 +44,4 @@ public class LinkedinLoginPage extends LinkedinBasePage{
         }
         return isLoaded;
     }
-
-
 }

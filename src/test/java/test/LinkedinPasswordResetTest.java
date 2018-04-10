@@ -9,11 +9,11 @@ import page.LinkedinRequestPasswordResetPage;
 
 public class LinkedinPasswordResetTest extends LinkedinBaseTest{
 
-    String userEmail = "olapitskiy@gmail.com";
-    String newPassword = "83282837";
+    String userEmail = "olapitskiy@ukr.net";
+    String newPassword = "5625262";
 
     /**
-     *
+     * Test that verifies reset of the password with confirmation by e-mail
      */
     @Test
     public void successfulPasswordReset() {

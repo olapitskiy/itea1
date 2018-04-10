@@ -19,8 +19,10 @@ public class LinkedinChooseNewPasswordPage extends LinkedinBasePage{
     private WebElement submitButton;
 
     /**
-     *
-     * @param driver
+     *передача параметров WebDriver родительскому классу (LinkedinBasePage) super(driver);
+     * и вызываем PageFactory.initElements(driver, this).
+     * Драйвер не начинает искать элементы на странице сразу же, а ищет их как только мы обращаемся к полю класса
+     * @param driver передаём WebDriver
      */
     public LinkedinChooseNewPasswordPage(WebDriver driver){
         super(driver);
@@ -28,8 +30,8 @@ public class LinkedinChooseNewPasswordPage extends LinkedinBasePage{
     }
 
     /**
-     *
-     * @return
+     * проверяе загрузилась ли страница или нет
+     * @return isLoaded ( true - если страница загрузилась, false -  если страница не загрузилась)
      */
     public boolean isLoaded() {
         boolean isLoaded;
@@ -43,9 +45,9 @@ public class LinkedinChooseNewPasswordPage extends LinkedinBasePage{
     }
 
     /**
-     *
-     * @param newPassword
-     * @return
+     *вызов изменения пароля
+     * @param newPassword ввод нового пароля
+     * @return Password Changed Success Page
      */
     public LinkedinPasswordChangedSuccessPage submitNewPassword(String newPassword) {
         newPasswordField.sendKeys(newPassword);
